@@ -5,8 +5,8 @@ import os
 random.seed(100)
 
 class ImageGenerator:
-    def __init__(self, res=(1920, 1080), name_root='xd'):
-        self.name_root = 'xd'
+    def __init__(self, res=(1920, 1080), default_name='pipi'):
+        self.name_root = name_root
         self.resolution = res
 
     def generate_name(self):
@@ -27,8 +27,26 @@ class ImageGenerator:
             for j in range(img.size[1]):
                 rands = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
                 pixels[i,j] = rands
-
-        return img
+        pass
+    def create_squares(self,n):
+        img = Image.new( 'RGB', self.resolution, "black")
+        pixels = img.load()
+        i = 0
+        j = 0
+        while j < img.size[1]:
+            rands = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
+            for ii in range(i, i + n):
+                if ii >= img.size[0]:
+                    break
+                for jj in range(j, j + n):
+                    if jj >= img.size[1]:
+                        break
+                    pixels[ii,jj] = rands
+            i = i + n
+            if i >= img.size[0]:
+                i = 0
+                j = j + n
+        return img      
 
     def create_random_greyscale(self):
         img = self.create_baseline()
@@ -51,9 +69,12 @@ class ImageGenerator:
         for i in range(int(self.resolution[1]/2)):
             for j in range(pixel_size):
                 pass
+<<<<<<< HEAD
 
         # do pixel_size # of passes
         pass
+=======
+>>>>>>> ea214baaae953e2a8e78077c2baf18d1ff7e8fb8
 
 # img.save('xd2.bmp', format='bmp')
 
@@ -62,3 +83,6 @@ if __name__ == "__main__":
     # stuff.create_random().show()
     # stuff.create_random_greyscale().show()
     stuff.create_big_pixel_random()
+    
+    ii = ImageGenerator()
+    ii.create_squares(100).save('xd2.bmp', format='bmp')
