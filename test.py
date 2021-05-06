@@ -50,7 +50,8 @@ class ImageGenerator:
         # for each chunk row
         for i in range(int(self.resolution[1]/2)):
             for j in range(pixel_size):
-                
+                pass
+
         # do pixel_size # of passes
         pass
 
