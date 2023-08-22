@@ -116,6 +116,8 @@ if __name__ == "__main__":
         help="a string type seed for the RNG, literally just does random.seed(INPUT_STRING_SEED)",
     )
 
+    parser.add_argument("--output", help="output path, outputs as a bmp")
+
     args = parser.parse_args()
 
     print("DEBUG, args are", args)
@@ -132,6 +134,10 @@ if __name__ == "__main__":
     if args.height == None:
         print("no height provided, using default height 1080")
         args.height = 1080
+
+    if args.output == None:
+        print("please provide an output path")
+        exit()
 
     args.width = int(args.width)
     args.height = int(args.height)
@@ -152,4 +158,4 @@ if __name__ == "__main__":
             print("invalid --type parameter")
 
     if not image == None:
-        image.show()
+        image.save(f"{args.output}", format="bmp")
