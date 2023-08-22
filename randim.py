@@ -56,19 +56,19 @@ def create_squares(self, n):
     return img
 
 
-def create_random_greyscale(self):
+def create_random_greyscale(resolution: tuple[int, int]):
     """
     returns a random image with only grey pixels
     """
-    img = self.create_black()
-    pixels = img.load()
-    for i in range(img.size[0]):
-        for j in range(img.size[1]):
-            xd = random.randint(0, 255)
-            rands = (xd, xd, xd)
-            pixels[i, j] = rands
+    image = create_black(resolution)
+    pixels = image.load()
+    for i in range(image.size[0]):
+        for j in range(image.size[1]):
+            randomInt = random.randint(0, 255)
+            randomInts = (randomInt, randomInt, randomInt)
+            pixels[i, j] = randomInts
 
-    return img
+    return image
 
 
 def create_big_pixel_random(self, pixel_size=2):
@@ -106,17 +106,18 @@ if __name__ == "__main__":
     )
 
     parser.add_argument(
-        "--seed",
-        help="a string type seed for the RNG, literally just does random.seed(INPUT_STRING_SEED)",
-    )
-    parser.add_argument(
         "--type",
         help="type of image you want to generate, one of 'black', 'random' or 'randomgreyscale'",
     )
     parser.add_argument("--width", help="width in pixels of the image, ie 1920")
     parser.add_argument("--height", help="height in pixels of the image, ie 1080")
+    parser.add_argument(
+        "--seed",
+        help="a string type seed for the RNG, literally just does random.seed(INPUT_STRING_SEED)",
+    )
 
     args = parser.parse_args()
+
     print("DEBUG, args are", args)
 
     if args.seed == None:
@@ -131,6 +132,9 @@ if __name__ == "__main__":
     if args.height == None:
         print("no height provided, using default height 1080")
         args.height = 1080
+
+    args.width = int(args.width)
+    args.height = int(args.height)
 
     image = None
 
