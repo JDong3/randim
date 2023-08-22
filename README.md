@@ -2,7 +2,7 @@
 
 ## Description
 
-Randim is a python script command line tool that can be used to generate random images based on a few parameters. **Use python 3 please.**
+Randim is a python script command line tool that can be used to generate random images based on a few parameters. **Use python 3 please.** Only bmp output is supported.
 
 ## Test Cases
 1. Black image, 400x800 resolution
