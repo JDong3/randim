@@ -9,10 +9,16 @@ Randim is a python script command line tool that can be used to generate random 
 
 `python randim.py --type black --width 400 --height 800 --seed asdf --output black.bmp`
 
+![black image](/test_output/black.bmp)
+
 2. Random image, 654x456 resolution
 
 `python randim.py --type random --width 654 --height 456 --seed asdf --output random.bmp`
 
+![random image](/test_output/random.bmp)
+
 3. Random greyscale image, 1920x1080 resolution
 
 `python randim.py --type randomgreyscale --width 1920 --height 1080 --seed asdf --output randomgreyscale.bmp`
+
+![random greyscale image](/test_output/randomgreyscale.bmp)
